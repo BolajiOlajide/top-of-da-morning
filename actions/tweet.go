@@ -5,7 +5,7 @@ import (
 	"github.com/dghubble/go-twitter/twitter"
 )
 
-const topOfDaMorningVideoID int64 = 1438926338660999171
+const topOfDaMorningVideoID int64 = 1438926145966247938
 
 // PublishTweet send top of the morning tweet haha
 func PublishTweet(client *twitter.Client) error {
@@ -21,5 +21,6 @@ func PublishTweet(client *twitter.Client) error {
 		return err
 	}
 
+	logger.InfoLogger.Println("Successfully published tweet.")
 	return nil
 }

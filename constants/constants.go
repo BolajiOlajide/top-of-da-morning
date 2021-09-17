@@ -11,3 +11,6 @@ const TwitterAccessToken string = "TWITTER_ACCESS_TOKEN"
 
 // TwitterAccessTokenSecret consumer secret for twitter
 const TwitterAccessTokenSecret string = "TWITTER_ACCESS_TOKEN_SECRET"
+
+// AssetsDirectoryPath path to assets used by the service
+const AssetsDirectoryPath string = "./assets/"

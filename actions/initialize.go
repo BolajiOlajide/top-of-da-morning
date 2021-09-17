@@ -3,6 +3,7 @@ package actions
 import (
 	"github.com/BolajiOlajide/top-of-da-morning/config"
 	"github.com/BolajiOlajide/top-of-da-morning/constants"
+	"github.com/BolajiOlajide/top-of-da-morning/logger"
 	"github.com/BolajiOlajide/top-of-da-morning/models"
 	"github.com/dghubble/go-twitter/twitter"
 	"github.com/dghubble/oauth1"
@@ -20,6 +21,7 @@ func initializeTwitterClient(credentials models.TwitterCredentials) *twitter.Cli
 }
 
 func generateTwitterCreds() models.TwitterCredentials {
+	logger.InfoLogger.Println("Generating twitter credentials.")
 	variables := config.GetEnvVars()
 
 	apiKey := variables[constants.TwitterAPIKey]
@@ -37,6 +39,7 @@ func generateTwitterCreds() models.TwitterCredentials {
 
 // InitializeBot starts up all the relevant services and prerequisites for this app
 func InitializeBot() *twitter.Client {
+	logger.InfoLogger.Println("About to initialize bot.")
 	credentials := generateTwitterCreds()
 
 	client := initializeTwitterClient(credentials)

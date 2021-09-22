@@ -24,7 +24,7 @@ func main() {
 	}
 
 	os.Exit(operationCode)
-	// fetchMediaID(1440380586321842186, client)
+	// fetchMediaID(1440630751712595979, client)
 }
 
 func fetchMediaID(tweetID int64, client *twitter.Client) {

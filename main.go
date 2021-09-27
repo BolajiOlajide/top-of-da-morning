@@ -13,11 +13,17 @@ import (
 func main() {
 	logger.InitializeLogger()
 	logger.InfoLogger.Println("Initialized Top of Da Morning Script")
-
 	client := actions.InitializeBot()
 
-	runBot(client)
-	// fetchMediaID(1442399972641628162, client)
+	switch command := os.Args[1]; command {
+	case "bot":
+		runBot(client)
+	case "fetchMediaId":
+		fetchMediaID(1442485251117248513, client)
+	default:
+		fmt.Printf("Unknown command %s", command)
+		os.Exit(1)
+	}
 }
 
 func runBot(client *twitter.Client) {

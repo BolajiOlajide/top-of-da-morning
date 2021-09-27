@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"strconv"
 
 	"github.com/BolajiOlajide/top-of-da-morning/actions"
 	"github.com/BolajiOlajide/top-of-da-morning/logger"
@@ -19,7 +20,12 @@ func main() {
 	case "bot":
 		runBot(client)
 	case "fetchMediaId":
-		fetchMediaID(1442485251117248513, client)
+		strMediaID := os.Args[2]
+		if mediaID, err := strconv.ParseInt(strMediaID, 10, 64); err != nil {
+			fmt.Printf("No media ID provided in argument. %v", err)
+		} else {
+			fetchMediaID(mediaID, client)
+		}
 	default:
 		fmt.Printf("Unknown command %s", command)
 		os.Exit(1)

@@ -16,15 +16,24 @@ func main() {
 
 	client := actions.InitializeBot()
 
-	var operationCode int = 0
-	err := actions.PublishTweet(client)
+	runBot(client)
+	// fetchMediaID(1442399972641628162, client)
+}
 
-	if err != nil {
-		operationCode = 1
+func runBot(client *twitter.Client) {
+	var operationCode int = 0
+
+	if actions.IsWeekDay() {
+		err := actions.PublishTweet(client)
+
+		if err != nil {
+			operationCode = 1
+		}
+	} else {
+		logger.InfoLogger.Println("Today is not a weekday. Take your time out to flex.")
 	}
 
 	os.Exit(operationCode)
-	// fetchMediaID(1440630751712595979, client)
 }
 
 func fetchMediaID(tweetID int64, client *twitter.Client) {

@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"math/rand"
 	"os"
+	"time"
 
 	"github.com/BolajiOlajide/top-of-da-morning/constants"
 	"github.com/BolajiOlajide/top-of-da-morning/models"
@@ -38,7 +39,10 @@ func pickRandomVideo() (models.TikTokVideo, error) {
 		return models.TikTokVideo{}, fmt.Errorf("An error occurred while loading the videos from the JSON. %s", err)
 	}
 
-	randomIndex := rand.Intn(len(videos))
+	seedSrc := rand.NewSource(time.Now().UnixNano())
+	r := rand.New(seedSrc)
+
+	randomIndex := r.Intn(len(videos))
 
 	return videos[randomIndex], nil
 }
